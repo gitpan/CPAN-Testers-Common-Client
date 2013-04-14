@@ -1,0 +1,28 @@
+use strict;
+use warnings;
+use ExtUtils::MakeMaker;
+
+WriteMakefile(
+    NAME                => 'CPAN::Testers::Common::Client',
+    AUTHOR              => 'Breno G. de Oliveira <garu@cpan.org>',
+    VERSION_FROM        => 'lib/CPAN/Testers/Common/Client.pm',
+    ABSTRACT_FROM       => 'lib/CPAN/Testers/Common/Client.pm',
+    PL_FILES            => {},
+    PREREQ_PM => {
+        'Carp'                  => 0,
+        'Capture::Tiny'         => 0,
+        'Config::Perl::V'       => 0,
+        'Devel::Platform::Info' => 0,
+        'ExtUtils::MakeMaker'   => 6.36,
+        'File::Spec'            => 0,
+        'Probe::Perl'           => 0,
+        'Test::More'            => 0,
+
+        # C:T:C:C:Config also relies on:
+        'File::HomeDir' => 0.58,
+        'File::Path'    => 0,
+        'IPC::Cmd'      => 0,
+    },
+    dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
+    clean               => { FILES => 'CPAN-Testers-Common-Client-*' },
+);

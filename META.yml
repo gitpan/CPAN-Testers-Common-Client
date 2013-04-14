@@ -1,0 +1,32 @@
+---
+abstract: 'Common class for CPAN::Testers clients'
+author:
+  - 'Breno G. de Oliveira <garu@cpan.org>'
+build_requires:
+  ExtUtils::MakeMaker: 0
+configure_requires:
+  ExtUtils::MakeMaker: 0
+dynamic_config: 1
+generated_by: 'ExtUtils::MakeMaker version 6.64, CPAN::Meta::Converter version 2.120921'
+license: unknown
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: CPAN-Testers-Common-Client
+no_index:
+  directory:
+    - t
+    - inc
+requires:
+  Capture::Tiny: 0
+  Carp: 0
+  Config::Perl::V: 0
+  Devel::Platform::Info: 0
+  ExtUtils::MakeMaker: 6.36
+  File::HomeDir: 0.58
+  File::Path: 0
+  File::Spec: 0
+  IPC::Cmd: 0
+  Probe::Perl: 0
+  Test::More: 0
+version: 0.01
