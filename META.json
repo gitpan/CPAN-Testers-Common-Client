@@ -37,6 +37,7 @@
             "Config::Perl::V" : "0",
             "Devel::Platform::Info" : "0",
             "ExtUtils::MakeMaker" : "6.36",
+            "File::Glob" : "0",
             "File::HomeDir" : "0.58",
             "File::Path" : "0",
             "File::Spec" : "0",
@@ -47,5 +48,5 @@
       }
    },
    "release_status" : "stable",
-   "version" : "0.02"
+   "version" : "0.03"
 }

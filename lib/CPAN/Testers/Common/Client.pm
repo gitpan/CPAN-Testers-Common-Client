@@ -13,7 +13,7 @@ use CPAN::Testers::Common::Client::PrereqCheck;
 
 use constant MAX_OUTPUT_LENGTH => 1_000_000;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 
 #==================================
@@ -94,6 +94,10 @@ sub author {
     return $self->{_author};
 }
 
+
+#FIXME? the distname in CPAN::Reporter is validated
+# under a specific regex in line 368. We should
+# move that logic here.
 sub distname {
     my ($self, $distname) = @_;
     $self->{_distname} = $distname if $distname;
@@ -372,6 +376,7 @@ sub _get_env_vars {
         /PERL/
         /LC_/
         /AUTHOR_TEST/
+        /RELEASE_TEST/
         LANG
         LANGUAGE
         PATH
@@ -381,6 +386,8 @@ sub _get_env_vars {
         TEMP
         TMPDIR
         AUTOMATED_TESTING
+        NON_INTERACTIVE
+        EXTENDED_TESTING
         INCLUDE
         LIB
         LD_LIBRARY_PATH
@@ -713,9 +720,8 @@ L<CPAN::Testers::Common::Client::Config>.
 
 =head2 Constructor
 
-=over 4
-
-=item * new - See the SYNOPSIS
+Calling C<new()> creates a new object. You B<must> pass a hash as argument setting at least
+I<distname>, I<author> and I<grade>. See below for their meaning.
 
 =back
 
@@ -723,13 +729,13 @@ L<CPAN::Testers::Common::Client::Config>.
 
 =over 4
 
-=item * author - the distribution's author. Defaults to the PAUSE id
+=item * author - the evaluated distribution's author. Could be a PAUSE id or a full name. B<Required>.
 
-=item * comments - tester's comments. Defaults to 'none provided' (but see L</AUTOMATED_TESTING> below)
-
-=item * distname - distribution name. Defaults to what the resource contains
+=item * distname - distribution name, in C<Dist-Name-version.suffix> format. B<Required>.
 
 =item * grade - 'pass', 'fail', 'na', 'unknown'. B<Required>.
+
+=item * comments - tester's comments. Defaults to 'none provided' (but see L</AUTOMATED_TESTING> below)
 
 =item * via - sender module (CPAN::Reporter, CPANPLUS, etc). Defaults to "Your friendly CPAN Testers client"
 
@@ -741,7 +747,7 @@ L<CPAN::Testers::Common::Client::Config>.
 
 =head3 populate()
 
-Will populate the object with information for each Metabase fact, and to create the CPAN Testers email.
+Will populate the object with information for each Metabase fact, and create the CPAN Testers email body.
 
 Returns a data structure containing all metabase facts data.
 
