@@ -4,7 +4,7 @@
       "Breno G. de Oliveira <garu@cpan.org>"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "ExtUtils::MakeMaker version 6.64, CPAN::Meta::Converter version 2.120921",
+   "generated_by" : "ExtUtils::MakeMaker version 6.66, CPAN::Meta::Converter version 2.120921",
    "license" : [
       "unknown"
    ],
@@ -40,7 +40,7 @@
             "File::Glob" : "0",
             "File::HomeDir" : "0.58",
             "File::Path" : "0",
-            "File::Spec" : "0",
+            "File::Spec" : "3.19",
             "IPC::Cmd" : "0",
             "Probe::Perl" : "0",
             "Test::More" : "0"
@@ -48,5 +48,5 @@
       }
    },
    "release_status" : "stable",
-   "version" : "0.03"
+   "version" : "0.04"
 }
